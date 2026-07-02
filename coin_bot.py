@@ -67,8 +67,8 @@ DB_PATH = "bot.db"
 # ВАЖНО: бота нужно добавить в каждый канал АДМИНИСТРАТОРОМ, иначе бот не сможет
 # проверить, подписан пользователь или нет.
 CHANNELS = [
-    {"chat_id": "@your_channel1", "url": "https://t.me/your_channel1", "title": "Канал 1"},
-    {"chat_id": "@your_channel2", "url": "https://t.me/your_channel2", "title": "Канал 2"},
+    {"-1003983524031": "@your_channel1", "url": "https://t.me/+_T-5yV7yCJlkMjE6", "title": "Канал 1"},
+    {"-1003693383185": "@your_channel2", "url": "https://t.me/+0rpvnLX8MbJjNDEy", "title": "Канал 2"},
 ]
 # Если обязательная подписка не нужна — оставь список CHANNELS пустым: CHANNELS = []
 # =====================================================
