@@ -67,9 +67,9 @@ DB_PATH = "bot.db"
 # ВАЖНО: бота нужно добавить в каждый канал АДМИНИСТРАТОРОМ, иначе бот не сможет
 # проверить, подписан пользователь или нет.
 CHANNELS = [
-    {"-1003983524031": "@your_channel1", "url": "https://t.me/+_T-5yV7yCJlkMjE6", "title": "Канал 1"},
-    {"-1003693383185": "@your_channel2", "url": "https://t.me/+0rpvnLX8MbJjNDEy", "title": "Канал 2"},
-]
+       {"chat_id": -1003983524031, "url": "https://t.me/+_T-5yV7yCJlkMjE6", "title": "Канал 1"},
+       {"chat_id": -1003693383185, "url": "https://t.me/+0rpvnLX8MbJjNDEy", "title": "Канал 2"},
+   ]
 # Если обязательная подписка не нужна — оставь список CHANNELS пустым: CHANNELS = []
 # =====================================================
 
@@ -232,12 +232,19 @@ async def get_not_subscribed(bot: Bot, user_id: int):
     """Возвращает список каналов, на которые пользователь ЕЩЁ НЕ подписан."""
     not_subscribed = []
     for ch in CHANNELS:
+        chat_id = ch.get("chat_id")
+        if not chat_id:
+            logging.error(
+                f"В CHANNELS есть запись без ключа 'chat_id': {ch}. "
+                f"Проверь формат: {{'chat_id': '@channel', 'url': '...', 'title': '...'}}"
+            )
+            continue
         try:
-            member = await bot.get_chat_member(ch["chat_id"], user_id)
+            member = await bot.get_chat_member(chat_id, user_id)
             if member.status in ("left", "kicked"):
                 not_subscribed.append(ch)
         except Exception as e:
-            logging.warning(f"Не удалось проверить подписку на {ch['chat_id']}: {e}")
+            logging.warning(f"Не удалось проверить подписку на {chat_id}: {e}")
             not_subscribed.append(ch)
     return not_subscribed
 
