@@ -55,8 +55,8 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 
 # ==================== НАСТРОЙКИ ====================
-BOT_TOKEN = "8777297869:AAFI8lY9zZhwoBUHEdWRt23h4ucJuEtvML8"
-ADMIN_IDS = {8064942862, 8189622055}  # <-- замени на свой Telegram ID (и добавь другие через запятую)
+BOT_TOKEN = ""
+ADMIN_IDS = {}  # <-- замени на свой Telegram ID (и добавь другие через запятую)
 DB_PATH = "bot.db"
 
 # Обязательная подписка на каналы.
